@@ -1,0 +1,7 @@
+- name: Install Logic Disassembler
+  shell: git clone https://github.com/derickr/vld.git vld; cd vld; phpize; ./configure; sudo make install; cd ..; rm -r vld
+
+- name: Enable vld.so extension
+  lineinfile: dest=/etc/php/7.0/cli/php.ini
+              insertafter='extension='
+              line='extension=vld.so'
